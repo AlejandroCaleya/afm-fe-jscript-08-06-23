@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+
+	<body>
+		<form
+			name="formulario"
+			onsubmit="return validation()"
+			action="confirmation.php"
+			method="post"
+		>
+			<div class="row">
+				<label for="nombre">Nombre:</label>
+				<input
+					type="text"
+					onkeyup="validarNombre()"
+					id="nombre"
+					class="nombre"
+					name="nombre"
+					placeholder="Introducir nombre"
+					minlength="2"
+					maxlength="30"
+					required
+					pattern="[a-zA-Z\s]+"
+				/>
+				<div class="error" id="errorNombre"></div>
+			</div>
+			<div class="row">
+				<label for="email">Email:</label>
+				<input
+					type="email"
+					onkeyup="validarEmail()"
+					id="email"
+					class="email"
+					name="email"
+				/>
+				<div class="error" id="errorEmail"></div>
+			</div>
+
+			<div class="row">
+				<label for="dninie">DNI/NIE:</label>
+				<input
+					type="dninie"
+					onkeyup="validarDniNie()"
+					id="dninie"
+					class="dninie"
+					name="dninie"
+				/>
+				<div class="error" id="errordninie"></div>
+			</div>
+
+			<div class="row">
+				<label for="telf">Telf:</label>
+				<input
+					type="telf"
+					onkeyup="validarTelf()"
+					id="telf"
+					class="telf"
+					name="telf"
+				/>
+				<div class="error" id="errorTelf"></div>
+			</div>
+			<div class="row">
+				<label>Género</label>
+				<div>
+					<label><input type="radio" name="gender" value="male" /> Male</label>
+					<label
+						><input type="radio" name="gender" value="female" /> Female</label
+					>
+					<label><input type="radio" name="gender" value="gato" /> Gato</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<label>Hobbies <i>(Optional)</i></label>
+				<div>
+					<label
+						><input type="checkbox" name="vicio" value="toros" /> toros</label
+					>
+					<label
+						><input type="checkbox" name="vicio" value="folk" /> Folklore
+						Tibetano</label
+					>
+					<label
+						><input type="checkbox" name="vicio" value="music" /> Music</label
+					>
+				</div>
+			</div>
+
+			<div class="row">
+				<label>GRPD</label>
+				<div>
+					<label
+						><input type="checkbox" name="vicio" value="toros" />Lorem ipsum
+						dolor, sit amet consectetur adipisicing elit. Deserunt incidunt
+						nulla neque voluptate cupiditate totam?</label
+					>
+				</div>
+			</div>
+
+			<input type="submit" value="Enviar" />
+		</form>
+		<script src="./script.js"></script>
+	</body>
+</html>
