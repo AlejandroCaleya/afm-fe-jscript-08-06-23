@@ -1,4 +1,31 @@
-let NombreError = (EmailError = TelfError = true);
+const LETRAS = [
+	"T",
+	"R",
+	"W",
+	"A",
+	"G",
+	"M",
+	"Y",
+	"F",
+	"P",
+	"D",
+	"X",
+	"B",
+	"N",
+	"J",
+	"Z",
+	"S",
+	"Q",
+	"V",
+	"H",
+	"L",
+	"C",
+	"K",
+	"E",
+	"T",
+];
+
+let NombreError = (EmailError = TelfError = GRPDError = dninieError = true);
 
 function mostrarError(id, txt) {
 	document.getElementById(id).innerHTML = txt;
@@ -57,12 +84,44 @@ function validarTelf() {
 	}
 }
 
+function validarGRPD() {
+	let grpd = document.formulario.grpd.checked;
+	console.log(grpd);
+	if (grpd) {
+		mostrarError("errorGRPD", "");
+		GRPDError = false;
+	} else {
+		mostrarError("errorGRPD", "ERROR: GRPD debe estar seleccinado");
+	}
+}
+
+function validarDniNie() {
+	let DniNie = "";
+	DniNie = document.formulario.dninie.value;
+	var regex = /^[XYZ]?\d{8}[A-Z]$/;
+	if (regex.test(DniNie) === false) {
+		mostrarError("errordninie", "ERROR: Formato DNI/NIE inválido");
+	} else {
+		let letra = DniNie[DniNie.length - 1];
+		regex = /\d+/g;
+		dni = parseInt(DniNie.match(regex));
+		if (LETRAS[dni % 23] != letra) {
+			mostrarError("errordninie", "ERROR: Letra no correcta");
+		} else {
+			mostrarError("errordninie", "");
+			dninieError = false;
+		}
+	}
+}
+
 function validation() {
-	if (!NombreError && !EmailError && !TelfError) return true;
+	if (!NombreError && !EmailError && !TelfError && !GRPDError) return true;
 	else {
 		validarNombre();
 		validarEmail();
 		validarTelf();
+		validarGRPD();
+		validarDniNie();
 		return false;
 	}
 }
